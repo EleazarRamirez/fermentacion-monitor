@@ -114,6 +114,6 @@ fermentacion-monitor/
 
 ## Integrantes
 
-- Persona 1 — Hardware (ESP32)
-- Persona 2 — Backend (API + DB)
-- Persona 3 — Frontend (Vue.js)
+- Ruben Valenzuela 1 — Hardware (ESP32)
+- Ruben Caballero 2 — Backend (API + DB)
+- Eleazar — Frontend (Vue.js)
