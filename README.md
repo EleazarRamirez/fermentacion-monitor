@@ -114,6 +114,6 @@ fermentacion-monitor/
 
 ## Integrantes
 
-- Ruben Valenzuela 1 — Hardware (ESP32)
+- Ruben Valenzuela 1 — Hardware (ESP32) y sensores
 - Ruben Caballero 2 — Backend (API + DB)
 - Eleazar — Frontend (Vue.js)
