@@ -109,4 +109,5 @@ h1 { font-size: 1.4rem; font-weight: 600; }
 .btn-secondary { background: #f0f0f0; color: #333; border: none; border-radius: 6px; padding: .5rem 1rem; cursor: pointer; font-size: .9rem; }
 
 .mensaje-centro { text-align: center; color: #999; padding: 2rem; }
+
 </style>
