@@ -170,6 +170,7 @@ onMounted(cargarLotes)
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
+  color: black;
 }
 
 .lote-card {
@@ -179,6 +180,7 @@ onMounted(cargarLotes)
 .lote-header {
   display: flex;
   justify-content: space-between;
+  color:black
 }
 
 .lote-nombre {
