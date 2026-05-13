@@ -10,7 +10,7 @@ const NotFoundView    = () => import('@/views/NotFoundView.vue')
 const RegisterView    = () => import('@/views/RegisterView.vue')
 const Forgotpassword  = () => import('@/views/Forgotpassword.vue')
 const Updatepassword  = () => import('@/views/Resetpassword.vue')
-const Cosa            = () => import('@/views/cosa.vue')
+const Fermentacion    = () => import('@/views/Fermentacion.vue')
 const Fermentaciones  = () => import('@/views/Fermentaciones.vue')
 
 // 👇 NUEVO
@@ -24,26 +24,26 @@ const routes = [
     meta: { title: 'Inicio', requiresAuth: false },
   },
 
-  {
-    path: '/fermentaciones',
-    name: 'fermentaciones',
-    component: Fermentaciones,
-    meta: { title: 'Fermentaciones', requiresAuth: false },
-  },
+  // {
+  //   path: '/fermentaciones',
+  //   name: 'fermentaciones',
+  //   component: Fermentaciones,
+  //   meta: { title: 'Fermentaciones', requiresAuth: false },
+  // },
 
   // 🔥 RUTA DINÁMICA (AQUÍ ESTÁ LA CLAVE)
   {
     path: '/lote/:id',
     name: 'lote-detalle',
     component: LoteDetalle,
-    meta: { title: 'Dashboard de lote', requiresAuth: false },
+    meta: { title: 'Dashboard de lote', requiresAuth:true },
   },
 
   {
-    path: '/cosa',
-    name: 'cosa',
-    component: Cosa,
-    meta: { title: 'cosa', requiresAuth: false },
+    path: '/fermentacion',
+    name: 'fermentacion',
+    component: Fermentacion,
+    meta: { title: 'cosa', requiresAuth:true },
   },
 
   {

@@ -157,7 +157,7 @@ function isFormValid() {
 
     await login(email.value, password.value)
 
-    router.push('/dashboard')
+    router.push('/fermentacion')
 
   } catch (error) {
     console.error(error.message)
