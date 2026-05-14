@@ -8,8 +8,8 @@
     <!-- Formulario nuevo lote -->
     <div v-if="mostrarFormulario" class="card form-card">
       <h2>Nuevo lote</h2>
-      <input v-model="form.nombre"      placeholder="Nombre del lote *" />
-      <input v-model="form.estilo"      placeholder="Estilo (ej. Ale, Lager)" />
+      <input class=" border-black text-gray-500" v-model="form.nombre"      placeholder="Nombre del lote *" />
+      <input class=" border-black text-gray-500"  v-model="form.estilo"      placeholder="Estilo (ej. Ale, Lager)" />
       <textarea v-model="form.descripcion" placeholder="Descripción (opcional)" rows="2" />
       <div class="form-acciones">
         <button class="btn-primary" @click="crearLote">Crear</button>
@@ -83,11 +83,11 @@ onMounted(cargarLotes)
 .encabezado { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; }
 h1 { font-size: 1.4rem; font-weight: 600; }
 
-.card { background: #fff; border-radius: 10px; padding: 1.25rem; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+.card { background: #5372fa; border-radius: 10px; padding: 1.25rem; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
 
-.form-card { margin-bottom: 1.25rem; display: flex; flex-direction: column; gap: .75rem; max-width: 480px; }
+.form-card { margin-bottom: 1.25rem; display: flex; flex-direction: column; gap: .75rem; max-width: 480px;  }
 .form-card input, .form-card textarea {
-  border: 1px solid #ddd; border-radius: 6px; padding: .55rem .75rem; font-size: .95rem; font-family: inherit;
+  border: 1px solid  #ddd; border-radius: 6px; border-color: black; padding: .55rem .75rem; font-size: .95rem; font-family: inherit;
 }
 .form-acciones { display: flex; gap: .75rem; }
 

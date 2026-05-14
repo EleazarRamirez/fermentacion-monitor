@@ -65,8 +65,9 @@ async function Lotes() {
 <style>
 body {
   font-family: system-ui, sans-serif;
-  background: #0d0d0f;
-  color: #e8e4dc;
+  /* background: #0d0d0f; */
+  background: #4e6d6e;
+  color: #000000;
 }
 </style>
 
