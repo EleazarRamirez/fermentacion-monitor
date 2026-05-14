@@ -7,7 +7,7 @@
       </RouterLink>
 
       <div class="nav-links">
-        <RouterLink to="/" class="nav-link">Lotes</RouterLink>
+        <label @click="Lotes" class="nav-link">Lotes</label>
 
         <!-- NO autenticado -->
         <template v-if="!isAuthenticated">
@@ -49,6 +49,17 @@ async function handleLogout() {
   await logout()
   router.push('/login')
 }
+
+async function Lotes() {
+
+  router.push('/fermentacion')
+}
+
+
+
+
+
+
 </script>
 
 <style>

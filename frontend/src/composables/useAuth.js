@@ -9,6 +9,12 @@ export function useAuth() {
   const isAuthenticated = computed(() => !!_session.value)
   const user = computed(() => _user.value)
 
+
+  supabase.auth.onAuthStateChange((event, session) => {
+  _session.value = session
+  _user.value = session?.user ?? null
+})
+
   /**
    * Registro de nuevo usuario con manejo de errores amigable
    */
@@ -38,6 +44,8 @@ export function useAuth() {
       return { ok: false, error: err.message || 'Error de conexión' }
     }
   }
+
+
 
   async function login(email, password) {
     try {

@@ -2,16 +2,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuth } from '@/composables/useAuth'
 
+
 // Lazy imports
 const HomeView        = () => import('@/views/HomeView.vue')
 const LoginView       = () => import('@/views/LoginView.vue')
-const DashboardView   = () => import('@/views/DashboardView.vue')
 const NotFoundView    = () => import('@/views/NotFoundView.vue')
 const RegisterView    = () => import('@/views/RegisterView.vue')
 const Forgotpassword  = () => import('@/views/Forgotpassword.vue')
 const Updatepassword  = () => import('@/views/Resetpassword.vue')
 const Fermentacion    = () => import('@/views/Fermentacion.vue')
-const Fermentaciones  = () => import('@/views/Fermentaciones.vue')
 
 // 👇 NUEVO
 const LoteDetalle     = () => import('@/views/Dashboard.vue')
@@ -21,7 +20,7 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView,
-    meta: { title: 'Inicio', requiresAuth: false },
+    meta: { title: 'Inicio',requiresAuth: false, },
   },
 
   // {
@@ -43,7 +42,7 @@ const routes = [
     path: '/fermentacion',
     name: 'fermentacion',
     component: Fermentacion,
-    meta: { title: 'cosa', requiresAuth:true },
+    meta: { title: 'Fermentaciones', requiresAuth:true },
   },
 
   {
@@ -72,7 +71,10 @@ const routes = [
     path: '/reset-password',
     name: 'reset-password',
     component: Updatepassword,
-    meta: { title: 'Restablecer contraseña', requiresAuth: false },
+    meta: { title: 'Restablecer contraseña', 
+       requiresAuth: false,
+      guestOnly: true,
+     },
   },
 
   {
@@ -93,28 +95,36 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
+  // Restaura el scroll al tope al cambiar de página
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) return savedPosition
     return { top: 0, behavior: 'smooth' }
   },
 })
 
-router.beforeEach((to) => {
+// ─────────────────────────────────────────
+//  NAVIGATION GUARD — el corazón del sistema
+// ─────────────────────────────────────────
+router.beforeEach((to, from) => {
   const { isAuthenticated } = useAuth()
 
+  // 1. Actualiza el <title> del documento
   document.title = `${to.meta.title ?? 'App'} | VueAuth`
 
+  // 2. Ruta protegida + usuario NO autenticado → redirige a /login
   if (to.meta.requiresAuth && !isAuthenticated.value) {
     return {
       name: 'login',
-      query: { redirect: to.fullPath },
+      query: { redirect: to.fullPath }, // guarda la ruta destino
     }
   }
 
+  // 3. Ruta guestOnly + usuario YA autenticado → redirige a /dashboard
   if (to.meta.guestOnly && isAuthenticated.value) {
-    return { name: 'home' } // 🔥 corregido (antes mandabas a dashboard que no existe)
+    return { name: 'dashboard' }
   }
 
+  // 4. Todo bien, permite la navegación
   return true
 })
 
