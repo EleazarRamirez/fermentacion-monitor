@@ -1,15 +1,18 @@
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createPinia } from 'pinia'
+import '@/assets/main.css'
+import { useAuth } from '@/composables/useAuth'
 import App from './App.vue'
-import Dashboard from './views/Dashboard.vue'
-import Fermentaciones from './views/Fermentaciones.vue'
+import router from './router'
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes: [
-    { path: '/',               component: Fermentaciones },
-    { path: '/lote/:id',       component: Dashboard }
-  ]
-})
+(async () => {
+  const app = createApp(App)
 
-createApp(App).use(router).mount('#app')
+  app.use(createPinia())
+  app.use(router)
+
+  const { getSession } = useAuth()
+  await getSession()
+
+  app.mount('#app')
+})()
